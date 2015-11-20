@@ -15,13 +15,19 @@ namespace spaceInvaders
 
         public Image bullet;
         public BitmapImage bulletBMS;
-        
+
+        public bool liveBullet;
+
         private double xPos;
         private double yPos;
 
 
         public PlayerBullet()
         {
+            liveBullet = false;
+            xPos = 0;
+            yPos = 0;
+
             bullet = new Image();
             bulletBMS = new BitmapImage(new Uri("ms-appx:///Assets/sprites/player-bullet.png"));
 
@@ -30,24 +36,28 @@ namespace spaceInvaders
                 bullet.Width = bulletBMS.PixelWidth;
                 bullet.Height = bulletBMS.PixelHeight;
 
-                Debug.WriteLine("Width: {0}, Height: {1}",
-        bullet.Width, bullet.Height);
-
-                
+                Debug.Write("loaded da bullet");
             };
 
             bullet.Source = bulletBMS;
-            
+            Debug.Write("default");
+
         }
+
+
+        
 
         public void shoot(double X, double Y)
         {
-           
-            
+
+
             Canvas.SetLeft(bullet, X);
             Canvas.SetTop(bullet, Y);
 
             yPos = Y;
+            xPos = X;
+
+            liveBullet = true;
 
         }
 
@@ -57,8 +67,49 @@ namespace spaceInvaders
             yPos += -10;
             Canvas.SetTop(bullet, yPos);
 
+            if (yPos <= 0)
+            {
+                setBulletState(false);
+                xPos = 0;
+                yPos = 0;
+            }
+
         }
 
-        
+        public void setBulletState(bool state)
+        {
+            if (!state)
+            {
+                xPos = 0;
+                yPos = 0;
+            }
+
+            liveBullet = state;
+        }
+
+        public bool getBulletState()
+        {
+            return liveBullet;
+        }
+        public double getBulletXpos()
+        {
+
+            return xPos;
+        }
+        public double getBulletYpos()
+        {
+
+            return yPos;
+        }
+
+        public Image getBullet()
+        {
+            return bullet;
+        }
+
+
     }
 }
+
+
+

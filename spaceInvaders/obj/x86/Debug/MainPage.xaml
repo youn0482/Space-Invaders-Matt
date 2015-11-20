@@ -7,8 +7,8 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid x:ConnectionId='1' x:Name="grid">
-        <Canvas x:ConnectionId='2' x:Name="canvas" HorizontalAlignment="Left" VerticalAlignment="Top" Width="{Binding ElementName=grid, Path=ActualWidth}" Height="{Binding ElementName=grid, Path=ActualHeight}" Background="Black"></Canvas>
+    <Grid x:ConnectionId='1' x:Name="grid" Background="Black">
+        <Canvas x:ConnectionId='2' x:Name="canvas" HorizontalAlignment="Left" VerticalAlignment="Top" Width="{Binding ElementName=grid, Path=ActualWidth}" Height="{Binding ElementName=grid, Path=ActualHeight}"></Canvas>
     </Grid>
 </Page>
 
